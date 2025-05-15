@@ -15,7 +15,7 @@
         <div class="flex justify-between items-center mb-8 bg-blue-900 header w-[100vw] h-[20vh] px-[5vw] z-{0}" >
             <div class="flex flex-col text-white ml-[5vh]">
             <h1 class="text-2xl font-semibold ">Team</h1>
-            <p><pre>Dashboard     All Teams</pre></p>
+            <p><pre>Dashboard    <span class="text-gray-50" >All Teams</span> </pre></p>
             </div>
             <div class="flex gap-4 mr-[5vh]">
                 <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
