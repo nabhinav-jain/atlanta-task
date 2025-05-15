@@ -1,11 +1,10 @@
 <?php
-require_once '../dbconnect.php'; 
+header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['error' => 'Method not allowed']);
-    exit;
-}
+require_once '../dbconnect.php'; 
+print_r($_REQUEST['logo_path']);
+die;
+
 
 function sanitize($conn, $key) {
     return mysqli_real_escape_string($conn, trim($_POST[$key] ?? ''));
@@ -43,32 +42,22 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 $logoPath = null;
-if (isset($_FILES['logo_path']) && $_FILES['logo_path']['error'] === UPLOAD_ERR_OK) {
+
+
+
+if (isset($_FILES['logo_path']) && is_uploaded_file($_FILES['logo_path']['tmp_name'])) {
     $uploadDir = __DIR__ . '/../images/';
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0755, true);
-    }
+    $fileName = uniqid('logo_') . '_' . basename($_FILES['logo_path']['name']);
+    $targetPath = $uploadDir . $fileName;
 
-    $fileTmp  = $_FILES['logo_path']['tmp_name'];
-    $fileName = basename($_FILES['logo_path']['name']);
-    $fileExt  = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-    $allowedExt = ['jpg', 'jpeg', 'png', 'gif'];
-
-    if (!in_array($fileExt, $allowedExt)) {
-        echo json_encode(['error' => 'Invalid image type']);
-        exit;
-    }
-
-    $uniqueName = uniqid('logo_', true) . '.' . $fileExt;
-    $targetPath = $uploadDir . $uniqueName;
-
-    if (move_uploaded_file($fileTmp, $targetPath)) {
-        $logoPath = '../images/' . $uniqueName; 
+    if (move_uploaded_file($_FILES['logo_path']['tmp_name'], $targetPath)) {
+        $logoPath = '../images/' . $fileName;
     } else {
-        echo json_encode(['error' => 'Failed to move uploaded file']);
+        echo json_encode(['error' => 'Failed to upload logo']);
         exit;
     }
 }
+
 
 $stmt = $conn->prepare("
     INSERT INTO users (name, mobile_no, email, address, role, designation, gender, logo_path, status, dob, marital_status)
@@ -97,8 +86,10 @@ $stmt->bind_param(
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true, 'message' => 'User added successfully']);
+    exit;
 } else {
     echo json_encode(['error' => 'Database insert failed: ' . $stmt->error]);
+    exit;
 }
 
 $stmt->close();

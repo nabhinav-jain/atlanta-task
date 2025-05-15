@@ -133,7 +133,7 @@ require('appUser.php');
                                         <?php endif; ?>
                                 
                                         <div class="text-xs text-gray-500">
-                                            <?php echo date('d/m/Y H:i:s', strtotime($row['created_at'])); ?>
+                                            <?php echo "created time".date('d/m/Y H:i:s', strtotime($row['created_at'])); ?>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -154,7 +154,7 @@ require('appUser.php');
                     </tbody>
                 </table>
             </div>
-            <div class="flex justify-between items-center mt-4">
+            <div class="flex justify-end items-center mt-4">
                
                 <div class="flex gap-2">
                     <button class="bg-white border border-green-500 rounded-md py-2 px-3 text-sm text-gray-700 hover:bg-gray-100">Previous</button>

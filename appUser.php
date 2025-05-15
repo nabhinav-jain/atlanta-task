@@ -10,7 +10,7 @@ include('head.php');
     </div>
 
 
-    <form class="px-6 py-6 grid grid-cols-1 md:grid-cols-2 gap-4" id="addUser">
+    <form class="px-6 py-6 grid grid-cols-1 md:grid-cols-2 gap-4" id="addUser" enctype="multipart/form-data" method="POST">
 
       <div>
         <label for=" fullName" class="block text-sm font-medium text-gray-700">Full Name<span class="text-red-500">*</span></label>
@@ -90,7 +90,7 @@ include('head.php');
 
       <div class="md:col-span-1">
         <label class="block text-sm font-medium text-gray-700">Upload Logo</label>
-        <input type="file" name="image"
+        <input type="file" name="logo_path"
           class="mt-1 block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4
                       file:rounded-md file:border-0
                       file:text-sm file:font-semibold
@@ -118,7 +118,8 @@ include('head.php');
   </div>
 </div>
 
-<script>$('#addUser').on('submit', function(e) {
+<script>
+$('#addUser').on('submit', function(e) {
   e.preventDefault();
 
   const requiredFields = [
@@ -148,7 +149,7 @@ include('head.php');
       }
     },
     error: function(xhr) {
-      // fallback if JSON parsing fails
+      
       alert('Error adding user: ' + (xhr.responseJSON?.error || xhr.statusText));
     }
   });
