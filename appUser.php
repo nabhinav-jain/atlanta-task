@@ -119,41 +119,33 @@ include('head.php');
 </div>
 
 <script>
-$('#addUser').on('submit', function(e) {
-  e.preventDefault();
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('addUser');
 
-  const requiredFields = [
-    'fullName', 'mobileNo', 'email', 'dob', 'marital_status', 
-    'address', 'role', 'desgination', 'gender'
-  ];
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-  for (const field of requiredFields) {
-    const value = $(`[name="${field}"]`).val();
-    if (!value || value.trim() === '') {
-      alert(`Please fill the required field: ${field.replace('_', ' ')}`);
-      return;
-    }
-  }
+      const formData = new FormData(form);
 
-  $.ajax({
-    url: 'api/adduser.php',
-    method: 'POST',
-    data: $(this).serialize(),
-    dataType: 'json',
-    success: function(response) {
-      if (response.error) {
-        alert('Error: ' + response.error);
-      } else {
-        alert('Successfully added');
-        $('#addUser')[0].reset();
+      try {
+        const res = await fetch('api/adduser.php', {
+          method: 'POST',
+          body: formData
+        });
+
+        const json = await res.json();
+
+        if (!res.ok || json.error) {
+          alert('Error: ' + (json.error || res.statusText));
+        } else {
+          alert('Successfully added');
+          form.reset();
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Upload failed');
       }
-    },
-    error: function(xhr) {
-      
-      alert('Error adding user: ' + (xhr.responseJSON?.error || xhr.statusText));
-    }
+    });
   });
-});
-
-
 </script>
+

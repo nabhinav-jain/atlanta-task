@@ -2,8 +2,7 @@
 header('Content-Type: application/json');
 
 require_once '../dbconnect.php'; 
-print_r($_REQUEST['logo_path']);
-die;
+
 
 
 function sanitize($conn, $key) {
@@ -45,17 +44,11 @@ $logoPath = null;
 
 
 
+$logoPath = null;
 if (isset($_FILES['logo_path']) && is_uploaded_file($_FILES['logo_path']['tmp_name'])) {
-    $uploadDir = __DIR__ . '/../images/';
-    $fileName = uniqid('logo_') . '_' . basename($_FILES['logo_path']['name']);
-    $targetPath = $uploadDir . $fileName;
-
-    if (move_uploaded_file($_FILES['logo_path']['tmp_name'], $targetPath)) {
-        $logoPath = '../images/' . $fileName;
-    } else {
-        echo json_encode(['error' => 'Failed to upload logo']);
-        exit;
-    }
+    $rawData = file_get_contents($_FILES['logo_path']['tmp_name']);
+    $mime    = $_FILES['logo_path']['type']; // e.g. "image/png"
+    $logoPath = 'data:' . $mime . ';base64,' . base64_encode($rawData);
 }
 
 
