@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors','1');
+ini_set('display_errors', '1');
 include('dbconnect.php');
 ?>
 <!DOCTYPE html>
@@ -22,8 +22,8 @@ require('appUser.php');
                 </p>
             </div>
             <div class="flex gap-4 mr-[5vh]">
-                <button  id="openModal" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
-                    <i class="bi bi-plus" ></i>
+                <button id="openModal" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
+                    <i class="bi bi-plus"></i>
 
                     Add
                 </button>
@@ -39,17 +39,21 @@ require('appUser.php');
             <div class="bg-white  rounded-lg p-4 mb-6">
                 <div class="flex items-center  justify-between ">
                     <div class="flex items-center ">
+                        <?php
+                        $limit = isset($_GET['limit']) ? $_GET['limit'] : '10'; // Default to 10 if not set
+                        ?>
+
                         <select id="perPage" class="w-[10vw] border rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
+                            <option value="10" <?= $limit === '10' ? 'selected' : '' ?>>10</option>
+                            <option value="20" <?= $limit === '20' ? 'selected' : '' ?>>20</option>
+                            <option value="50" <?= $limit === '50' ? 'selected' : '' ?>>50</option>
+                            <option value="100" <?= $limit === '100' ? 'selected' : '' ?>>100</option>
                         </select>
-                      
+
                     </div>
                     <div class="w-[20%]">
                         <input type="text" placeholder="Search..." class="p-2 border border-blue-300  rounded-md  outline-none ring-blue-500">
-                       
+
                     </div>
                 </div>
 
@@ -71,91 +75,90 @@ require('appUser.php');
                     <tbody class="bg-white divide-y divide-gray-200">
                         <tr>
                             <?php
-                            $limit = $_REQUEST['limit']??'10';
+                            $limit = $_REQUEST['limit'] ?? '10';
                             $sql = "select * from users limit $limit";
                             $result = mysqli_query($conn, $sql);
-                            $fetched =[];
-                            while($row = mysqli_fetch_assoc($result)): ?>
-                                <tr class="bg-white">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <?php echo htmlspecialchars($row['name'], ENT_QUOTES); ?>
-                                    </td>
-                                
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <?php echo htmlspecialchars($row['mobile_no'], ENT_QUOTES); ?>
-                                    </td>
-                                
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <?php echo htmlspecialchars($row['email'], ENT_QUOTES); ?>
-                                    </td>
-                                
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <?php echo date('d M Y', strtotime($row['dob'])); ?>
-                                    </td>
-                                
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <?php echo htmlspecialchars(ucfirst($row['role']), ENT_QUOTES); ?>
-                                    </td>
-                                
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <?php echo htmlspecialchars($row['designation'], ENT_QUOTES); ?>
-                                    </td>
-                                
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <?php
-                                            echo $row['marital_status'] === '1'
-                                                 ? 'Married'
-                                                 : 'Single';
-                                        ?>
-                                    </td>
-                                
-                               
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <div class="flex items-center">
-                                            <img
-                                                src="<?php echo htmlspecialchars($row['logo_path'], ENT_QUOTES); ?>"
-                                                alt="<?php echo htmlspecialchars($row['name'], ENT_QUOTES); ?>"
-                                                class="h-8 w-8 rounded-full"
-                                            >
-                                        </div>
-                                    </td>
-                                
-                                 
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <?php if($row['status'] === 'active'): ?>
-                                            <span class="px-2 py-1 rounded-full bg-green-500 text-white text-xs font-semibold">
-                                                Active
-                                            </span>
-                                        <?php else: ?>
-                                            <span class="px-2 py-1 rounded-full bg-red-500 text-white text-xs font-semibold">
-                                                Inactive
-                                            </span>
-                                        <?php endif; ?>
-                                
-                                        <div class="text-xs text-gray-500">
-                                            <?php echo "created time".date('d/m/Y H:i:s', strtotime($row['created_at'])); ?>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <div class="flex gap-2">
-                                            <button class="text-blue-500 hover:text-blue-700">
-                                                <i class="bi bi-pencil-fill text-xl"></i>
-                                            </button>
-                                
-                                            <button class="text-red-500 hover:text-red-700">
-                                                <i class="bi bi-trash-fill text-xl"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php endwhile; ?>
-                                
+                            $fetched = [];
+                            while ($row = mysqli_fetch_assoc($result)): ?>
+                        <tr class="bg-white">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <?php echo htmlspecialchars($row['name'], ENT_QUOTES); ?>
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <?php echo htmlspecialchars($row['mobile_no'], ENT_QUOTES); ?>
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <?php echo htmlspecialchars($row['email'], ENT_QUOTES); ?>
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <?php echo date('d M Y', strtotime($row['dob'])); ?>
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <?php echo htmlspecialchars(ucfirst($row['role']), ENT_QUOTES); ?>
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <?php echo htmlspecialchars($row['designation'], ENT_QUOTES); ?>
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <?php
+                                echo $row['marital_status'] === '1'
+                                    ? 'Married'
+                                    : 'Single';
+                                ?>
+                            </td>
+
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <div class="flex items-center">
+                                    <img
+                                        src="<?php echo htmlspecialchars($row['logo_path'], ENT_QUOTES); ?>"
+                                        alt="<?php echo htmlspecialchars($row['name'], ENT_QUOTES); ?>"
+                                        class="h-8 w-8 rounded-full">
+                                </div>
+                            </td>
+
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <?php if ($row['status'] === 'active'): ?>
+                                    <span class="px-2 py-1 rounded-full bg-green-500 text-white text-xs font-semibold">
+                                        Active
+                                    </span>
+                                <?php else: ?>
+                                    <span class="px-2 py-1 rounded-full bg-red-500 text-white text-xs font-semibold">
+                                        Inactive
+                                    </span>
+                                <?php endif; ?>
+
+                                <div class="text-xs text-gray-500">
+                                    <?php echo "created time" . date('d/m/Y H:i:s', strtotime($row['created_at'])); ?>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <div class="flex gap-2">
+                                    <button class="text-blue-500 hover:text-blue-700">
+                                        <i class="bi bi-pencil-fill text-xl"></i>
+                                    </button>
+
+                                    <button class="text-red-500 hover:text-red-700">
+                                        <i class="bi bi-trash-fill text-xl"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+
 
                     </tbody>
                 </table>
             </div>
             <div class="flex justify-end items-center mt-4">
-               
+
                 <div class="flex gap-2">
                     <button class="bg-white border border-green-500 rounded-md py-2 px-3 text-sm text-gray-700 hover:bg-gray-100">Previous</button>
                     <button class="bg-green-500 text-white rounded-md py-2 px-3 text-sm font-semibold">1</button>
@@ -169,27 +172,36 @@ require('appUser.php');
 
 </html>
 <script>
-  const openModalBtn = document.getElementById('openModal');
-  const closeModalBtn = document.getElementById('closeModal');
-  const modal = document.getElementById('modal');
+    const openModalBtn = document.getElementById('openModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const modal = document.getElementById('modal');
 
-  openModalBtn.addEventListener('click', () => {
-    modal.classList.remove('hidden');
-  });
+    openModalBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+    });
 
-  closeModalBtn.addEventListener('click', () => {
-    modal.classList.add('hidden');
-  });
+    closeModalBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
 
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.add('hidden');
-    }
-  });
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape" && !modal.classList.contains('hidden')) {
-      modal.classList.add('hidden');
-    }
-  });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape" && !modal.classList.contains('hidden')) {
+            modal.classList.add('hidden');
+        }
+    });
+
+    document.getElementById('perPage').addEventListener('change', function() {
+        const selectedValue = this.value;
+        const url = new URL(window.location);
+
+        url.searchParams.set('limit', selectedValue);
+
+        window.location.href = url.toString();
+    });
 </script>
