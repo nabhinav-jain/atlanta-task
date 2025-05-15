@@ -1,18 +1,15 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors','1');
 include('dbconnect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link href="style.css" rel="stylesheet" />
-
-</head>
+<?php
+require('head.php');
+require('appUser.php');
+?>
 
 <body class="bg-gray-100 font-inter">
     <div class="container  ">
@@ -25,8 +22,8 @@ include('dbconnect.php');
                 </p>
             </div>
             <div class="flex gap-4 mr-[5vh]">
-                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
-                    <i class="bi bi-plus"></i>
+                <button  id="openModal" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center gap-2">
+                    <i class="bi bi-plus" ></i>
 
                     Add
                 </button>
@@ -158,7 +155,7 @@ include('dbconnect.php');
                 </table>
             </div>
             <div class="flex justify-between items-center mt-4">
-                <p class="text-sm text-gray-700">Showing 1 to 2 of 2 entries</p>
+               
                 <div class="flex gap-2">
                     <button class="bg-white border border-green-500 rounded-md py-2 px-3 text-sm text-gray-700 hover:bg-gray-100">Previous</button>
                     <button class="bg-green-500 text-white rounded-md py-2 px-3 text-sm font-semibold">1</button>
@@ -171,3 +168,28 @@ include('dbconnect.php');
 </body>
 
 </html>
+<script>
+  const openModalBtn = document.getElementById('openModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const modal = document.getElementById('modal');
+
+  openModalBtn.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+  });
+
+  closeModalBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape" && !modal.classList.contains('hidden')) {
+      modal.classList.add('hidden');
+    }
+  });
+</script>
