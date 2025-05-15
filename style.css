@@ -9,4 +9,17 @@
     appearance: none;
     can add double arrow here
 } */
+
+.dataTables_filter {
+    margin-bottom:15px;
+}
+#teams-table_length label {
+    font-size: 0; 
+  }
+  
+  #teams-table_length select {
+    width: 10vw;
+    font-size: 14px; 
+  }
+  
  

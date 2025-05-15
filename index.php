@@ -37,27 +37,9 @@ require('appUser.php');
 
         <div class="table container bg-white w-[75vw] mx-auto z-{2} mt-[-8vh] shadow-md rounded-sm p-2">
             <div class="bg-white  rounded-lg p-4 mb-6">
-                <div class="flex items-center  justify-between ">
-                    <div class="flex items-center ">
-                        <?php
-                        $limit = isset($_GET['limit']) ? $_GET['limit'] : '10'; // Default to 10 if not set
-                        ?>
+              
 
-                        <select id="perPage" class="w-[10vw] border rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="10" <?= $limit === '10' ? 'selected' : '' ?>>10</option>
-                            <option value="20" <?= $limit === '20' ? 'selected' : '' ?>>20</option>
-                            <option value="50" <?= $limit === '50' ? 'selected' : '' ?>>50</option>
-                            <option value="100" <?= $limit === '100' ? 'selected' : '' ?>>100</option>
-                        </select>
-
-                    </div>
-                    <div class="w-[20%]">
-                        <input type="text" placeholder="Search..." class="p-2 border border-blue-300  rounded-md  outline-none ring-blue-500">
-
-                    </div>
-                </div>
-
-                <table class="min-w-full divide-y divide-gray-200 mt-3">
+                <table class="min-w-full divide-y divide-gray-200 " id="teams-table">
                     <thead class="">
                         <tr class="bg-blue-500 text-white">
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider custom-table-header">Name</th>
@@ -73,7 +55,7 @@ require('appUser.php');
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
+                        
                             <?php
                             $limit = $_REQUEST['limit'] ?? '10';
                             $sql = "select * from users limit $limit";
@@ -172,6 +154,9 @@ require('appUser.php');
 
 </html>
 <script>
+     $('#teams-table').DataTable({
+       
+     });
     const openModalBtn = document.getElementById('openModal');
     const closeModalBtn = document.getElementById('closeModal');
     const modal = document.getElementById('modal');
