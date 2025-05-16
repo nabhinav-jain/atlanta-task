@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 16, 2025 at 08:40 AM
+-- Generation Time: May 16, 2025 at 08:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -56,7 +56,8 @@ INSERT INTO `users` (`id`, `name`, `mobile_no`, `email`, `address`, `role`, `des
 (12, 'Jamal sex', '9999999911', 'xavag@mailinator.com', 'delhi', 'Admin', 'Officia soluta volup', 'male', NULL, 'active', '2002-08-21', 0, '2025-05-16 05:08:21', '2025-05-16 06:17:13'),
 (14, 'sangeeta Mcconnell', '9999999999', 'mateqituj@mailinator.com', 'Necessitatibus corru', 'User', 'Sint blanditiis labo', 'male', NULL, 'active', '2022-06-03', 0, '2025-05-16 05:54:11', '2025-05-16 05:55:23'),
 (15, 'Cara Merrill jain', '9999999999', 'kydahi@mailinator.com', 'Aut cumque et aliqua', 'User', 'Laudantium aperiam', 'other', NULL, 'inactive', '2014-11-14', 1, '2025-05-16 06:00:04', '2025-05-16 06:40:25'),
-(16, 'Hanna Trevino', '9999999991', 'cataq@mailinator.com', 'Vel aliquip providen', 'Admin', 'Unde eiusmod nihil c', 'female', NULL, 'active', '1973-11-09', 0, '2025-05-16 06:02:03', '2025-05-16 06:15:34');
+(16, 'Hanna Trevino', '9999999991', 'cataq@mailinator.com', 'Vel aliquip providen', 'Admin', 'Unde eiusmod nihil c', 'female', NULL, 'active', '1973-11-09', 0, '2025-05-16 06:02:03', '2025-05-16 06:15:34'),
+(17, 'Xaviera Campbell', '9999999999', 'zedyb@mailinator.com', 'Delectus obcaecati', 'Admin', 'Temporibus libero ev', 'female', NULL, 'inactive', '1991-09-25', 0, '2025-05-16 06:52:17', '2025-05-16 06:54:44');
 
 --
 -- Indexes for dumped tables
@@ -77,7 +78,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
