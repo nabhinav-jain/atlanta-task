@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           alert('Successfully edited');
           form.reset();
+          location.reload()
         }
       } catch (err) {
         console.error(err);

@@ -101,7 +101,7 @@ require('edituser.php');
                                     <div class="flex items-center">
                                         <img
                                             src="<?php echo htmlspecialchars($row['logo_path'], ENT_QUOTES); ?>"
-                                            alt="<?php echo htmlspecialchars($row['name'], ENT_QUOTES); ?>"
+                                            alt="N/A"
                                             class="h-8 w-8 rounded-full">
                                     </div>
                                 </td>
@@ -145,11 +145,7 @@ require('edituser.php');
             </div>
             <div class="flex justify-end items-center mt-4">
 
-                <div class="flex gap-2">
-                    <button class="bg-white border border-green-500 rounded-md py-2 px-3 text-sm text-gray-700 hover:bg-gray-100">Previous</button>
-                    <button class="bg-green-500 text-white rounded-md py-2 px-3 text-sm font-semibold">1</button>
-                    <button class="bg-white border border-green-500 rounded-md py-2 px-3 text-sm text-gray-700 hover:bg-gray-100">Next</button>
-                </div>
+             
             </div>
         </div>
     </div>

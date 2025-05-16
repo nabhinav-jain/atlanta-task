@@ -64,9 +64,9 @@ include('head.php');
         <label for="role" class="block text-sm font-medium text-gray-700">Role<span class="text-red-500">*</span></label>
         <select id="role" name="role"
           class="mt-1 bg-white block w-full border border-gray-300 rounded-md px-3 py-2 text-sm appearance-none focus:outline-none ">
-          <option>Select Role</option>
-          <option>Admin</option>
-          <option>User</option>
+          <option value="">Select Role</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
         </select>
       </div>
 
