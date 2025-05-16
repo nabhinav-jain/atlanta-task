@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `atlanta-task`;
+USE `atlanta-task`;
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
@@ -52,7 +54,7 @@ INSERT INTO `users` (`id`, `name`, `mobile_no`, `email`, `address`, `role`, `des
 (4, 'Kelsey Chapman', '9999999999', 'myva@mailinator.com', 'Amet nihil soluta e', 'User', 'Maiores dignissimos', 'other', NULL, 'inactive', '2023-09-30', 0, '2025-05-15 14:48:16', '2025-05-15 14:48:16'),
 (7, 'Abraham sharm', '9999999115', 'tazavorox@mailifnator.comer', 'delhi', 'User', 'Rerum cupidatat ipsu', 'female', NULL, 'active', '1972-06-18', 0, '2025-05-15 14:52:52', '2025-05-16 06:14:35'),
 (10, 'Ethan Watkins', '9999999999', 'kybyn@mailinator.com', 'Qui accusantium ut a', 'Admin', 'Velit sit non volup', 'male', NULL, 'inactive', '2000-06-24', 0, '2025-05-15 16:07:30', '2025-05-16 05:58:12'),
-(11, 'Kiayada Sexton', '9999999999', 'bonacob@mailinator.com', 'Optio non neque rer', 'Select Role', 'Nisi quasi id volupt', 'female', NULL, 'inactive', '1991-12-05', 1, '2025-05-16 05:03:30', '2025-05-16 05:03:30'),
+(11, 'Kiayada james', '9999999999', 'bonacob@mailinator.com', 'Optio non neque rer', 'Select Role', 'Nisi quasi id volupt', 'female', NULL, 'inactive', '1991-12-05', 1, '2025-05-16 05:03:30', '2025-05-16 05:03:30'),
 (12, 'aman singh ', '9999999911', 'xavag@mailinator.com', 'delhi', 'Admin', 'Officia soluta volup', 'male', NULL, 'active', '2002-08-21', 0, '2025-05-16 05:08:21', '2025-05-16 06:17:13'),
 (14, 'sangeeta Mcconnell', '9999999999', 'mateqituj@mailinator.com', 'Necessitatibus corru', 'User', 'Sint blanditiis labo', 'male', NULL, 'active', '2022-06-03', 0, '2025-05-16 05:54:11', '2025-05-16 05:55:23'),
 (15, 'Cara Merrill ', '9999999999', 'kydahi@mailinator.com', 'Aut cumque et aliqua', 'User', 'Laudantium aperiam', 'other', NULL, 'inactive', '2014-11-14', 1, '2025-05-16 06:00:04', '2025-05-16 06:40:25'),
