@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `atlanta-task`;
-USE `atlanta-task`;
+CREATE DATABASE IF NOT EXISTS `atlanta_task`;
+USE `atlanta_task`;
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `atlanta-task`
+-- Database: `atlanta_task`
 --
 
 -- --------------------------------------------------------
