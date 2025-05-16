@@ -19,7 +19,7 @@ require('edituser.php');
             <div class="flex flex-col text-white ml-[5vh]">
                 <h1 class="text-2xl font-semibold ">Team</h1>
                 <p>
-                <pre>Dashboard    <span class="text-gray-50" >All Teams</span> </pre>
+                <pre>Dashboard    <span class="text-gray-50 opacity-75" >All Teams</span> </pre>
                 </p>
             </div>
             <div class="flex gap-4 mr-[5vh]">
