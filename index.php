@@ -58,8 +58,8 @@ require('edituser.php');
                     <tbody class="bg-white divide-y divide-gray-200">
 
                         <?php
-                        $limit = $_REQUEST['limit'] ?? '10';
-                        $sql = "select * from users limit $limit";
+                      
+                        $sql = "select * from users";
                         $result = mysqli_query($conn, $sql);
                         $fetched = [];
                         while ($row = mysqli_fetch_assoc($result)): ?>
