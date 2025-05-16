@@ -145,7 +145,7 @@ require('edituser.php');
             </div>
             <div class="flex justify-end items-center mt-4">
 
-             
+
             </div>
         </div>
     </div>
@@ -238,21 +238,28 @@ require('edituser.php');
     // code for update modal
 
     function openUpdateModal(userData) {
-        console.log(userData.gender , userData.status , userData.marital_status)
+     
+        console.log(userData.gender, userData.status, userData.marital_status)
         document.getElementById('userid').value = userData.id || '';
-     document.getElementById('editfullName').value = userData.name || '';
-    document.getElementById('editmobileNo').value = userData.mobile_no || '';
-    document.getElementById('editemail').value = userData.email || '';
-    document.getElementById('editdob').value = userData.dob || '';
-    document.getElementById('editmarital_status').value = userData.marital_status || '';
-    document.getElementById('editaddress').value = userData.address || '';
-    document.getElementById('editrole').value = userData.role || '';
-    document.getElementById('editdesignation').value = userData.designation || '';
-    document.getElementById('editgender').value = userData.gender || '';
-    document.getElementById('editstatus').value = userData.status || '';
+        document.getElementById('editfullName').value = userData.name || '';
+        document.getElementById('editmobileNo').value = userData.mobile_no || '';
+        document.getElementById('editemail').value = userData.email || '';
+        document.getElementById('editdob').value = userData.dob || '';
 
-    document.getElementById('updateModal').classList.remove('hidden');
-        
+        let maritalStatusValue = userData.marital_status || ''; 
+
+        let radios = document.querySelectorAll('input[name="editmarital_status"]');
+        radios.forEach(radio => {
+            radio.checked = radio.value === maritalStatusValue;
+        });
+        document.getElementById('editaddress').value = userData.address || '';
+        document.getElementById('editrole').value = userData.role || '';
+        document.getElementById('editdesignation').value = userData.designation || '';
+        document.getElementById('editgender').value = userData.gender || '';
+        document.getElementById('editstatus').value = userData.status || '';
+
+        document.getElementById('updateModal').classList.remove('hidden');
+
     }
     const updateModalClosebtn = document.getElementById("closeUpdateModal");
     updateModalClosebtn.addEventListener('click', closeUpdateModal);

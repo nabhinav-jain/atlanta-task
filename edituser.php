@@ -39,18 +39,34 @@ include('head.php');
           class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none " />
       </div>
 
-      <div>
-        <label for="editmarital_status" class="block text-sm font-medium text-gray-700">
-          Marital Status<span class="text-red-500">*</span>
-        </label>
-        <select id="editmarital_status" name="editmarital_status"
-          class="mt-1 bg-white block w-full border border-gray-300 rounded-md px-3 py-2 text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <option value="">Select Marital Status</option>
-          <option value="0">Single</option>
-          <option value="1">Married</option>
+      <div id="editmarital_status" class="mt-1">
+  <label class="block text-sm font-medium text-gray-700">
+    Marital Status<span class="text-red-500">*</span>
+  </label>
 
-        </select>
-      </div>
+  <div class="mt-1 flex space-x-6">
+    <label class="inline-flex items-center">
+      <input
+        type="radio"
+        name="editmarital_status"
+        value="0"
+        class="form-radio text-blue-600"
+      />
+      <span class="ml-2 text-sm">Single</span>
+    </label>
+
+    <label class="inline-flex items-center">
+      <input
+        type="radio"
+        name="editmarital_status"
+        value="1"
+        class="form-radio text-blue-600"
+      />
+      <span class="ml-2 text-sm">Married</span>
+    </label>
+  </div>
+</div>
+
 
 
 

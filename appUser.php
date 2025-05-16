@@ -22,7 +22,7 @@ include('head.php');
       <div>
         <label for="mobileNo" class="block text-sm font-medium text-gray-700">Mobile No<span class="text-red-500">*</span></label>
         <input type="Number" id="mobileNo" name="mobileNo" placeholder="Enter mobile no"
-          class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none "  pattern="^\d{10}$"/>
+          class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none " pattern="^\d{10}$" />
       </div>
 
       <div>
@@ -39,18 +39,32 @@ include('head.php');
           class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none " />
       </div>
 
-      <div>
-        <label for="marital_status" class="block text-sm font-medium text-gray-700">
+      <div id="marital_status" class="mt-1">
+        <label class="block text-sm font-medium text-gray-700">
           Marital Status<span class="text-red-500">*</span>
         </label>
-        <select id="marital_status" name="marital_status"
-          class="mt-1 bg-white block w-full border border-gray-300 rounded-md px-3 py-2 text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <option value="">Select Marital Status</option>
-          <option value="single">Single</option>
-          <option value="married">Married</option>
 
-        </select>
+        <div class="mt-1 flex space-x-6">
+          <label class="inline-flex items-center">
+            <input
+              type="radio"
+              name="marital_status"
+              value="single"
+              class="form-radio text-blue-600" />
+            <span class="ml-2 text-sm">Single</span>
+          </label>
+
+          <label class="inline-flex items-center">
+            <input
+              type="radio"
+              name="marital_status"
+              value="married"
+              class="form-radio text-blue-600" />
+            <span class="ml-2 text-sm">Married</span>
+          </label>
+        </div>
       </div>
+
 
 
 
@@ -150,4 +164,3 @@ include('head.php');
     });
   });
 </script>
-
