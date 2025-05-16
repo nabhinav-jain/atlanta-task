@@ -138,8 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
           alert('Error: ' + (json.error || res.statusText));
         } else {
           alert('Successfully edited');
-          form.reset();
-          location.reload()
+          document.getElementById('updateModal').classList.remove('hidden');
+
+          window.location.href = window.location.pathname;
         }
       } catch (err) {
         console.error(err);

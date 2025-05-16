@@ -140,6 +140,8 @@ include('head.php');
         } else {
           alert('Successfully added');
           form.reset();
+          window.location.href = window.location.pathname;
+
         }
       } catch (err) {
         console.error(err);
