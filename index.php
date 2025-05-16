@@ -13,7 +13,7 @@ require('edituser.php');
 ?>
 
 <body class="bg-gray-100 font-inter">
-    <div class="container  ">
+    <div class="container w-[100vw]  ">
 
         <div class="flex justify-between items-center mb-8 bg-blue-900 header w-[100vw] h-[20vh] px-[5vw] z-{0}">
             <div class="flex flex-col text-white ml-[5vh]">
