@@ -173,9 +173,12 @@ require('edituser.php');
 
 </html>
 <script>
-    $('#teams-table').DataTable({
-
-    });
+  $('#teams-table').DataTable({
+    pageLength: 10,       
+    lengthChange: true,   
+    paging: true,        
+    dom: 'lfrtip'         
+  });    
     const openModalBtn = document.getElementById('openModal');
     const closeModalBtn = document.getElementById('closeModal');
     const modal = document.getElementById('modal');

@@ -22,4 +22,6 @@
     font-size: 14px; 
   }
   
- 
+ #teams-table_previous , #teams-table_next{
+    color: green !important;
+ }
