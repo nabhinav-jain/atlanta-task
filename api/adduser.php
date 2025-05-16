@@ -13,12 +13,14 @@ function sanitize($conn, $key) {
 
 $required = ['fullName', 'mobileNo', 'email', 'role', 'gender', 'status', 'marital_status'];
 foreach ($required as $field) {
-    if (empty($_POST[$field])&& $_POST[$fieldield]!='0') {
-        http_response_code(422);
+    if (!isset($_POST[$field]) || ($_POST[$field] === '' && $_POST[$field] !== '0')) {
         echo json_encode(['error' => "Missing field: $field"]);
         exit;
     }
 }
+
+        
+
 
 $fullName     = sanitize($conn, 'fullName');
 $mobileNo     = sanitize($conn, 'mobileNo');

@@ -143,8 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = window.location.pathname;
         }
       } catch (err) {
-        console.error(err);
-        alert('Upload failed');
+        alert(err);
       }
     });
   });
