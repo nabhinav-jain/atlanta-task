@@ -127,7 +127,7 @@ require('appUser.php');
                                         <i class="bi bi-pencil-fill text-xl"></i>
                                     </button>
 
-                                    <button class="text-red-500 hover:text-red-700">
+                                    <button class="text-red-500 hover:text-red-700" onclick="openModal(<?= $row['id'] ?>)">
                                         <i class="bi bi-trash-fill text-xl"></i>
                                     </button>
                                 </div>
@@ -149,6 +149,25 @@ require('appUser.php');
             </div>
         </div>
     </div>
+
+    <!-- delete modal --> 
+    <div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-md w-[400px] max-w-full shadow-lg overflow-hidden">
+    <div class="bg-blue-900 text-white px-4 py-3 flex justify-between items-center">
+      <h3 class="text-sm font-semibold">Are You Sure for Delete This Record</h3>
+      <button onclick="closeModal()" class="text-white text-lg font-bold leading-none">&times;</button>
+    </div>
+
+    <div class="px-4 py-3 flex justify-between bg-gray-50">
+      <button id="deleteBtn" class="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-4 py-2 rounded">
+        Delete
+      </button>
+      <button onclick="closeModal()" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
 
 </body>
 
@@ -181,12 +200,37 @@ require('appUser.php');
         }
     });
 
-    document.getElementById('perPage').addEventListener('change', function() {
-        const selectedValue = this.value;
-        const url = new URL(window.location);
+    // modal of delete 
 
-        url.searchParams.set('limit', selectedValue);
+    let deleteId;
+  function openModal(id) {
+    deleteId = id;
+    document.getElementById('confirmModal').classList.remove('hidden');
+  }
 
-        window.location.href = url.toString();
-    });
+  function closeModal() {
+    document.getElementById('confirmModal').classList.add('hidden');
+  }
+
+  document.getElementById('deleteBtn').addEventListener('click', () => {
+  if (!deleteId) return;
+
+  fetch(`api/deleteuser.php?id=${encodeURIComponent(deleteId)}`, {
+    method: 'GET',
+  })
+  .then(response => response.json())
+  .then(data => {
+    if(data.error) {
+      alert('Error: ' + data.error);
+    } else {
+      alert('Deleted successfully');
+      window.location.reload();
+    }
+    closeModal();
+  })
+  .catch(err => {
+    alert('Delete request failed: ' + err);
+    closeModal();
+  });
+});
 </script>
