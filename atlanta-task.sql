@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `mobile_no` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -50,20 +50,21 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `mobile_no`, `email`, `address`, `role`, `designation`, `gender`, `logo_path`, `status`, `dob`, `marital_status`, `created_at`, `updated_at`) VALUES
-(4, 'Kelsey Chapman', '9999999999', 'myva@mailinator.com', 'Amet nihil soluta e', 'User', 'Maiores dignissimos', 'other', NULL, 'inactive', '2023-09-30', 0, '2025-05-15 14:48:16', '2025-05-15 14:48:16'),
-(7, 'Abraham sharm', '9999999115', 'tazavorox@mailifnator.comer', 'delhi', 'User', 'Rerum cupidatat ipsu', 'female', NULL, 'active', '1972-06-18', 0, '2025-05-15 14:52:52', '2025-05-16 06:14:35'),
-(10, 'Ethan Watkins', '9999999999', 'kybyn@mailinator.com', 'Qui accusantium ut a', 'Admin', 'Velit sit non volup', 'male', NULL, 'inactive', '2000-06-24', 0, '2025-05-15 16:07:30', '2025-05-16 05:58:12'),
-(11, 'Kiayada james', '9999999999', 'bonacob@mailinator.com', 'Optio non neque rer', 'Select Role', 'Nisi quasi id volupt', 'female', NULL, 'inactive', '1991-12-05', 1, '2025-05-16 05:03:30', '2025-05-16 05:03:30'),
-(12, 'aman singh ', '9999999911', 'xavag@mailinator.com', 'delhi', 'Admin', 'Officia soluta volup', 'male', NULL, 'active', '2002-08-21', 0, '2025-05-16 05:08:21', '2025-05-16 06:17:13'),
-(14, 'sangeeta Mcconnell', '9999999999', 'mateqituj@mailinator.com', 'Necessitatibus corru', 'User', 'Sint blanditiis labo', 'male', NULL, 'active', '2022-06-03', 0, '2025-05-16 05:54:11', '2025-05-16 05:55:23'),
-(15, 'Cara Merrill ', '9999999999', 'kydahi@mailinator.com', 'Aut cumque et aliqua', 'User', 'Laudantium aperiam', 'other', NULL, 'inactive', '2014-11-14', 1, '2025-05-16 06:00:04', '2025-05-16 06:40:25'),
-(16, 'rajesh kumar', '9999999991', 'cataq@mailinator.com', 'Vel aliquip providen', 'Admin', 'Unde eiusmod nihil c', 'female', NULL, 'active', '1973-11-09', 0, '2025-05-16 06:02:03', '2025-05-16 06:15:34'),
-(17, 'Xaviera Campbell', '9999999999', 'zedyb@mailinator.com', 'Delectus obcaecati', 'Admin', 'Temporibus libero ev', 'female', NULL, 'inactive', '1991-09-25', 0, '2025-05-16 06:52:17', '2025-05-16 06:54:44');
 
 --
 -- Indexes for dumped tables
 --
+INSERT INTO `users` (`name`, `mobile_no`, `email`, `address`, `role`, `designation`, `gender`, `logo_path`, `status`, `dob`, `marital_status`, `created_at`, `updated_at`) VALUES
+('Aman Sharma', '9876543210', 'aman.sharma@example.com', '123 Civil Lines, Delhi', 'admin', 'Team Lead', 'male', NULL, 'active', '1990-01-15', 1, NOW(), NOW()),
+('Sneha Verma', '9123456780', 'sneha.verma@example.com', '45 Residency Road, Mumbai', 'user', 'Developer', 'female', NULL, 'active', '1995-07-20', 0, NOW(), NOW()),
+('Rajeev Kapoor', '9988776655', 'rajeev.kapoor@example.com', '78 MG Road, Pune', 'manager', 'HR Manager', 'male', NULL, 'inactive', '1988-11-05', 1, NOW(), NOW()),
+('Meera Joshi', '9112233445', 'meera.joshi@example.com', '22 Lake View, Bangalore', 'admin', 'Senior Developer', 'female', NULL, 'active', '1992-03-12', 1, NOW(), NOW()),
+('Aryan Singh', '9001122334', 'aryan.singh@example.com', '90 Hill Top, Chennai', 'user', 'Intern', 'male', NULL, 'active', '2000-06-30', 0, NOW(), NOW()),
+('Tanvi Das', '9345678901', 'tanvi.das@example.com', '12 Ocean Drive, Kolkata', 'user', 'QA Engineer', 'female', NULL, 'inactive', '1994-09-09', 0, NOW(), NOW()),
+('Kunal Mehta', '9870012345', 'kunal.mehta@example.com', '77 Palm Street, Jaipur', 'manager', 'Product Manager', 'male', NULL, 'active', '1985-05-25', 1, NOW(), NOW()),
+('Neha Agarwal', '9765432109', 'neha.agarwal@example.com', '34 Park Lane, Ahmedabad', 'admin', 'Tech Lead', 'female', NULL, 'active', '1991-02-14', 1, NOW(), NOW()),
+('Vikram Rao', '9321456789', 'vikram.rao@example.com', '19 Lotus Enclave, Hyderabad', 'user', 'UX Designer', 'male', NULL, 'inactive', '1993-08-18', 1, NOW(), NOW()),
+('Divya Patel', '9876543211', 'divya.patel@example.com', '56 Spring Field, Surat', 'user', 'Data Analyst', 'female', NULL, 'active', '1996-12-10', 0, NOW(), NOW());
 
 --
 -- Indexes for table `users`

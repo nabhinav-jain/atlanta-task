@@ -21,8 +21,8 @@ include('head.php');
 
       <div>
         <label for="mobileNo" class="block text-sm font-medium text-gray-700">Mobile No<span class="text-red-500">*</span></label>
-        <input type="tel" id="mobileNo" name="mobileNo" placeholder="Enter mobile no"
-          class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none " pattern="^\d{10}$" />
+        <input type="tel" id="mobileNo" name="mobileNo" placeholder="Enter mobile no" maxlength="10" pattern="^\d{10}$" required class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none" oninput="this.value = this.value.replace(/\D/g, '').slice(0, 10);" />
+
       </div>
 
       <div>
