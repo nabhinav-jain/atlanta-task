@@ -1,5 +1,9 @@
 <?php
 header('Content-Type: application/json');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 require_once '../dbconnect.php'; 
 
@@ -10,8 +14,8 @@ function sanitize($conn, $key) {
 
 $required = ['editfullName', 'editmobileNo', 'editemail', 'editrole', 'editgender', 'editstatus', 'editmarital_status'];
 foreach ($required as $field) {
-    if (empty($_POST[$field])) {
-        http_response_code(422);
+    if (empty($_POST[$field]) && $_POST[$field]!='0') {
+        
         echo json_encode(['error' => "Missing field: $field"]);
         exit;
     }
@@ -45,8 +49,8 @@ $logoPath = null;
 
 $logoPath = null;
 if (isset($_FILES['editlogo_path']) && is_uploaded_file($_FILES['editlogo_path']['tmp_name'])) {
-    $rawData = file_get_contents($_FILES['logo_path']['tmp_name']);
-    $mime    = $_FILES['logo_path']['type']; 
+    $rawData = file_get_contents($_FILES['editlogo_path']['tmp_name']);
+    $mime    = $_FILES['editlogo_path']['type']; 
     $logoPath = 'data:' . $mime . ';base64,' . base64_encode($rawData);
 }
 
@@ -85,8 +89,10 @@ $stmt->bind_param(
     $status,       
     $dob,            
     $maritalStatus,  
-    $userId          
+    $userid          
 );
+
+
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true, 'message' => 'User updated successfully']);

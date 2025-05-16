@@ -1,6 +1,8 @@
 <?php
 header('Content-Type: application/json');
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once '../dbconnect.php'; 
 
 
@@ -11,7 +13,7 @@ function sanitize($conn, $key) {
 
 $required = ['fullName', 'mobileNo', 'email', 'role', 'gender', 'status', 'marital_status'];
 foreach ($required as $field) {
-    if (empty($_POST[$field])) {
+    if (empty($_POST[$field])&& $_POST[$fieldield]!='0') {
         http_response_code(422);
         echo json_encode(['error' => "Missing field: $field"]);
         exit;

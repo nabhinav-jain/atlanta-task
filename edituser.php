@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!res.ok || json.error) {
           alert('Error: ' + (json.error || res.statusText));
         } else {
-          alert('Successfully added');
+          alert('Successfully edited');
           form.reset();
         }
       } catch (err) {
