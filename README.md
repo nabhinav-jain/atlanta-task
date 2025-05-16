@@ -2,7 +2,7 @@ User Management System
 
 This project is a user management system designed to add, update, and delete users efficiently. The system is optimized for use on laptops and desktop devices, providing a clean and intuitive user interface.
 
-    Technology: PHP 8.3
+    Technology: PHP 8.0.30
 
     UI: Desktop and laptop support only
 
