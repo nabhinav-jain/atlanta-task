@@ -58,35 +58,36 @@ require('edituser.php');
                     <tbody class="bg-white divide-y divide-gray-200">
 
                         <?php
-                      
+
                         $sql = "select * from users";
                         $result = mysqli_query($conn, $sql);
                         $fetched = [];
                         while ($row = mysqli_fetch_assoc($result)): ?>
                             <tr class="bg-white">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <?php echo htmlspecialchars($row['name'], ENT_QUOTES); ?>
+                                    <?php echo !empty($row['name']) ? htmlspecialchars($row['name'], ENT_QUOTES) : 'N/A'; ?>
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <?php echo htmlspecialchars($row['mobile_no'], ENT_QUOTES); ?>
+                                    <?php echo !empty($row['mobile_no']) ? htmlspecialchars($row['mobile_no'], ENT_QUOTES) : 'N/A'; ?>
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <?php echo htmlspecialchars($row['email'], ENT_QUOTES); ?>
+                                    <?php echo !empty($row['email']) ? htmlspecialchars($row['email'], ENT_QUOTES) : 'N/A'; ?>
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <?php echo date('d M Y', strtotime($row['dob'])); ?>
+                                    <?php echo !empty($row['dob']) ? date('d M Y', strtotime($row['dob'])) : 'N/A'; ?>
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <?php echo htmlspecialchars(ucfirst($row['role']), ENT_QUOTES); ?>
+                                    <?php echo !empty($row['role']) ? htmlspecialchars(ucfirst($row['role']), ENT_QUOTES) : 'N/A'; ?>
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    <?php echo htmlspecialchars($row['designation'], ENT_QUOTES); ?>
+                                    <?php echo !empty($row['designation']) ? htmlspecialchars($row['designation'], ENT_QUOTES) : 'N/A'; ?>
                                 </td>
+
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                     <?php
@@ -126,7 +127,7 @@ require('edituser.php');
                                     <div class="flex gap-2">
 
                                         <?php $jsonRow = htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8'); ?>
-                                        <button class="text-blue-500 hover:text-blue-700" onclick='openUpdateModal(<?= json_encode($row, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP); ?>)'>
+                                        <button class="text-green-500 hover:text-green-700" onclick='openUpdateModal(<?= json_encode($row, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP); ?>)'>
                                             <i class="bi bi-pencil-fill text-xl"></i>
                                         </button>
 
@@ -173,12 +174,12 @@ require('edituser.php');
 
 </html>
 <script>
-  $('#teams-table').DataTable({
-    pageLength: 10,       
-    lengthChange: true,   
-    paging: true,        
-    dom: 'lfrtip'         
-  });    
+    $('#teams-table').DataTable({
+        pageLength: 10,
+        lengthChange: true,
+        paging: true,
+        dom: 'lfrtip'
+    });
     const openModalBtn = document.getElementById('openModal');
     const closeModalBtn = document.getElementById('closeModal');
     const modal = document.getElementById('modal');
@@ -241,7 +242,7 @@ require('edituser.php');
     // code for update modal
 
     function openUpdateModal(userData) {
-     
+
         console.log(userData.gender, userData.status, userData.marital_status)
         document.getElementById('userid').value = userData.id || '';
         document.getElementById('editfullName').value = userData.name || '';
@@ -249,7 +250,7 @@ require('edituser.php');
         document.getElementById('editemail').value = userData.email || '';
         document.getElementById('editdob').value = userData.dob || '';
 
-        let maritalStatusValue = userData.marital_status || ''; 
+        let maritalStatusValue = userData.marital_status || '';
 
         let radios = document.querySelectorAll('input[name="editmarital_status"]');
         radios.forEach(radio => {

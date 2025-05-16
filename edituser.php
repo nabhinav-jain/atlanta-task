@@ -21,7 +21,7 @@ include('head.php');
 
       <div>
         <label for="editmobileNo" class="block text-sm font-medium text-gray-700">Mobile No<span class="text-red-500">*</span></label>
-        <input type="Number" id="editmobileNo" name="editmobileNo" placeholder="Enter mobile no"
+        <input type="tel" id="editmobileNo" name="editmobileNo" placeholder="Enter mobile no"
           class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none "  pattern="^\d{10}$"/>
       </div>
 
