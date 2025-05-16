@@ -123,7 +123,7 @@ require('appUser.php');
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                 <div class="flex gap-2">
-                                    <button class="text-blue-500 hover:text-blue-700">
+                                    <button class="text-blue-500 hover:text-blue-700" onclick="openUpdateModal(<?= $row['id'] ?>)">
                                         <i class="bi bi-pencil-fill text-xl"></i>
                                     </button>
 
